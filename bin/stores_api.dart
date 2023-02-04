@@ -1,5 +1,20 @@
-import 'package:stores_api/stores_api.dart' as stores_api;
+import 'dart:io';
+import 'package:shelf/shelf_io.dart';
+import 'package:shelf_router/shelf_router.dart';
+import 'package:shelf/shelf.dart' as shelf;
 
-void main(List<String> arguments) {
-  print('Hello world: ${stores_api.calculate()}!');
+Future<void> main(List<String> arguments) async {
+  final ip = InternetAddress.anyIPv4;
+
+  final router = Router();
+
+  final handler = const shelf.Pipeline()
+      .addMiddleware(shelf.logRequests())
+      .addHandler(router);
+
+  final port = int.parse(Platform.environment['PORT'] ?? '8181');
+
+  final server = await serve(handler, ip, port);
+
+  print('Server listening on port ${server.port}');
 }
