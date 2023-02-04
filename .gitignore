@@ -4,3 +4,5 @@
 
 # Conventional directory for build output.
 build/
+mysql_data/
+/mysql_data
