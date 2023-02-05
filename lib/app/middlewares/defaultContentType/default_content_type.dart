@@ -1,5 +1,5 @@
 import 'package:shelf/shelf.dart';
-import 'package:stores_api/app/core/middlewares/middlewares.dart';
+import 'package:stores_api/app/middlewares/middlewares.dart';
 
 class DefaultContentType extends Middlewares {
   @override

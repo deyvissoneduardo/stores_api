@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
-import 'package:stores_api/app/core/middlewares/middlewares.dart';
+import 'package:stores_api/app/middlewares/middlewares.dart';
 
 class CorsMiddlewares extends Middlewares {
   final Map<String, String> headers = {

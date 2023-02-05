@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 import 'package:shelf/shelf.dart';
-import 'package:stores_api/app/core/helpers/jwt_helpers.dart';
-import 'package:stores_api/app/core/logger/i_logger.dart';
-import 'package:stores_api/app/core/middlewares/middlewares.dart';
-import 'package:stores_api/app/core/middlewares/security/security_skip_url.dart';
+import 'package:stores_api/app/helpers/jwt_helpers.dart';
+import 'package:stores_api/app/logger/i_logger.dart';
+import 'package:stores_api/app/middlewares/middlewares.dart';
+import 'package:stores_api/app/middlewares/security/security_skip_url.dart';
 
 class SecurityMiddleware extends Middlewares {
   final ILogger _log;
