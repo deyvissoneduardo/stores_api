@@ -5,7 +5,7 @@ class JwtHelpers {
   JwtHelpers._();
   static final String _jwtSecret = env['JWT_SECRET'] ?? env['jwtSecret']!;
 
-  static String generateJWT(int userId, int? supplierId) {
+  static String generateJWT(int userId) {
     final claimSet = JwtClaim(
       issuer: 'stores',
       subject: userId.toString(),
