@@ -23,7 +23,7 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<User> createUser(User user) async {
-    MySqlConnection? conn;
+   MySqlConnection? conn;
     try {
       conn = await connection.openConnection();
       final query = ''' 
