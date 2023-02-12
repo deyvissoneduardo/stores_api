@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository {
 
       return user.copyWith(id: userId, password: null);
     } on MySqlException catch (e, s) {
-      if (e.message.contains('usuario.email_UNIQUE')) {
+      if (e.message.contains('users.email_UNIQUE')) {
         log.error('Usuario ja cadastrado no banco', e, s);
         throw UserExistsException();
       }
@@ -60,9 +60,9 @@ class UserRepository implements IUserRepository {
     try {
       conn = await connection.openConnection();
       var query = ''' 
-        SELECT * FROM usuario 
+        SELECT * FROM users 
         WHERE email = ?
-        AND senha = ?
+        AND password = ?
       ''';
       final result = await conn.query(query, [
         email,
