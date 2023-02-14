@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:injectable/injectable.dart';
 import 'package:mysql1/mysql1.dart';
 
@@ -89,6 +88,31 @@ class UserRepository implements IUserRepository {
       );
     } finally {
       await conn?.close();
+    }
+  }
+
+  @override
+  Future<void> updateRefreshToken(User user)async{
+    MySqlConnection? conn;
+    try {
+      conn = await connection.openConnection();
+      final query = ''' 
+      UPDATE users
+      refresh_token = ?
+      WHERE id = ?
+      ''';
+      await conn.query(query, [
+        user.refreshToken!,
+        user.id!,
+      ]);
+    } on MySqlException catch (e, s) {
+      log.error('Erro ao confirma login', e, s);
+      throw DatabaseException(
+        message: e.message,
+        exception: e,
+      );
+    } finally {
+      conn?.close();
     }
   }
 }

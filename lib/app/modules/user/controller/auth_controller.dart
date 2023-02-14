@@ -33,7 +33,6 @@ class AuthController {
       User user;
       user = await userService.loginWithEmailAndPassword(
           loginViewModel.email, loginViewModel.password);
-
       return Response.ok(jsonEncode(
         {'access_token': JwtHelpers.generateJWT(user.id!)},
       ));

@@ -34,6 +34,11 @@ class UserService implements IUserService {
   @override
   Future<String> confirmLogin(UserConfirmInputModel inputModel) async {
     final refreshToken = JwtHelpers.refreshToken(inputModel.accessToken);
+    final user = User(
+      id: inputModel.userId,
+      refreshToken: refreshToken,
+    );
+    await userRepository.updateRefreshToken(user);
     return refreshToken;
   }
 }
