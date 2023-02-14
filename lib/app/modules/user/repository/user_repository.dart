@@ -26,6 +26,7 @@ class UserRepository implements IUserRepository {
    MySqlConnection? conn;
     try {
       conn = await connection.openConnection();
+      print(conn);
       final query = ''' 
         INSERT users(name, email, password)
         VALUES(?,?,?)
